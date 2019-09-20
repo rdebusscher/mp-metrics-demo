@@ -38,7 +38,7 @@
         <dependency>
             <groupId>be.atbash.mp.rest-client</groupId>
             <artifactId>atbash-rest-client-impl</artifactId>
-            <version>0.9-SNAPSHOT</version>
+            <version>0.5.1.1</version>
             <scope>test</scope>
         </dependency>
 

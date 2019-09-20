@@ -11,7 +11,7 @@ User manual for Atbash configuration.
 
 This document is the steps in the demo of the presentation _Deploy, monitor, and take control of your Micro-Services with MicroProfile_.
 
-It shows you how you can show the metrics in Grafana charts.
+It shows you how you can visualize the MicroProfile metrics in Grafana charts.
 
 == Requirements
 
@@ -31,7 +31,7 @@ Download the code from the GitHub repository https://github.com/rdebusscher/mp-m
 
 To make it easier to work with the different docker containers, you can open 3 different terminal windows. they all need a specific base directory to work with them easily.
 
-1. Terminal **<project>** with the directory _<source_home>_ as the current directory`
+1. Terminal **<project>** with the directory _<source_home>_ as the current directory
 2. Terminal **<prometheus>** with the directory _<source_home>/src/prometheus/docker_ as the current directory
 3. Terminal **<grafana>** which can have any directory as the current directory.
 
@@ -58,7 +58,7 @@ You can execute the following commands in the **<project>** terminal.
 And then to create the image
 
 ----
-    docker build -t wjax/service .
+    docker build -t metrics/service .
 ----
 
 === Startup the image with Application.
@@ -66,10 +66,8 @@ And then to create the image
 Now that we have the Docker image, let start up a container with this image. ( **<project>** terminal but not required)
 
 ----
-    docker run -d -p 8080:8080 --name service --net demo-net wjax/service
+    docker run -d -p 8080:8080 --name service --net demo-net metrics/service
 ----
-
-The name _service_ is here important as it is used in the Prometheus configuration. We have defined that it looks up the application through DNS by using the names _service_.
 
 You can verify if everything is ok by calling the following URL in your browser
 
@@ -84,7 +82,7 @@ We are creating a special Docker image containing the Prometheus server (from Ad
 Run the build image command from the **prometheus** terminal.
 
 ----
-    docker build -t wjax/prometheus .
+    docker build -t metrics/prometheus .
 ----
 
 === Startup the image with Prometheus
@@ -92,7 +90,7 @@ Run the build image command from the **prometheus** terminal.
 Now that we have Prometheus Docker image, let start the container with this image.
 
 ----
-   docker run -d -p 9090:9090 --name prometheus --net demo-net wjax/prometheus
+   docker run -d -p 9090:9090 --name prometheus --net demo-net metrics/prometheus
 ----
 
 You can verify if the connection with the application works with the following steps

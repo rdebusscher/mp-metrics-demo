@@ -29,7 +29,6 @@ public class FlakyResource {
     @GET
     @Path("{customerId}")
     @Produces(MediaType.APPLICATION_JSON)
-
     public JsonObject getFlakyResponse(@PathParam("customerId") Long customerId) {
         long waitValue = determineWait();
         try {
